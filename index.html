@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d1b">
-  <meta name="description" content="Portfolio of Basireddy Siva Subba Reddy, a B.Tech CSE student interested in frontend development and responsive web experiences.">
-  <title>Basireddy Siva Subba Reddy | Portfolio</title>
+  <meta name="description" content="Portfolio of Basireddy Siva Subba Reddy, Computer Science Engineering student at KL University.">
+  <meta name="author" content="Basireddy Siva Subba Reddy">
+  <meta property="og:title" content="Basireddy Siva Subba Reddy | Developer Portfolio">
+  <meta property="og:description" content="Computer Science Engineering student at KL University focused on frontend development and practical web projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio-v7fs.vercel.app/">
+  <meta name="theme-color" content="#080c16">
+  <title>Basireddy Siva Subba Reddy | Developer Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,503 +20,329 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="header">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#home">
-        <span class="brand-mark">SR</span>
-        <span>Siva Reddy<span class="accent">.</span></span>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="#home" class="logo" aria-label="Siva home">
+        <span class="logo-mark">S</span><span>Siva<span class="logo-dot">.</span></span>
       </a>
 
-      <button class="menu-toggle" aria-label="Open menu"
-        aria-expanded="false" aria-controls="nav-links">
+      <button class="menu-toggle" id="menu-toggle" type="button"
+        aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
 
-      <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a class="nav-cta" href="#contact">Contact ↗</a>
-      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#experience">Experience</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link nav-cta" href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero container" id="home">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">
-          <span class="status-dot"></span>
-          B.Tech CSE Student · Frontend Development
-        </p>
-
-        <h1>
-          Building thoughtful<br>
-          digital <span class="gradient">experiences.</span>
-        </h1>
-
-        <p class="hero-description">
-          I'm <strong>Basireddy Siva Subba Reddy</strong>, a computer science
-          student who enjoys turning ideas into clean, responsive, and useful
-          web experiences.
-        </p>
-
-        <div class="actions">
-          <a class="button primary" href="#projects">Explore my work ↘</a>
-          <a class="button secondary" href="mailto:reddysivasubba@gmail.com">
-            Email me ↗
-          </a>
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <p class="eyebrow">COMPUTER SCIENCE ENGINEERING STUDENT</p>
+          <h1>Hi, I'm <span class="gradient-text">Basireddy Siva</span><br>Subba Reddy.</h1>
+          <h2 class="hero-subtitle">Aspiring Software Developer</h2>
+          <p class="hero-description">
+            I'm a B.Tech CSE student at KL University interested in front-end
+            development and software engineering. I enjoy building practical
+            web applications and learning through projects and hackathons.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore My Work <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-secondary" href="mailto:reddysivasubba@gmail.com">Contact Me</a>
+          </div>
+          <div class="hero-socials">
+            <a href="https://github.com/SivaSubbaReddy006" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/basireddy-sivasubbareddy-8a3230338/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
         </div>
 
-        <div class="hero-meta">
-          <span>⌘ &nbsp;HTML · CSS · JavaScript</span>
-          <span>⌖ &nbsp;KL University</span>
+        <div class="hero-visual reveal">
+          <div class="profile-orbit" aria-hidden="true"></div>
+          <div class="profile-card">
+            <div class="profile-card-top"><span>DEVELOPER PROFILE</span><span>PORTFOLIO</span></div>
+            <div class="profile-avatar">
+              <img src="images/profile.jpg" alt="Basireddy Siva Subba Reddy"
+                onerror="this.style.display='none';this.parentElement.classList.add('avatar-fallback')">
+            </div>
+            <h3>Basireddy Siva Subba Reddy</h3>
+            <p class="profile-role">Aspiring Software Developer</p>
+            <div class="profile-divider"></div>
+            <div class="profile-info">
+              <div><span>Education</span><strong>B.Tech CSE</strong></div>
+              <div><span>University</span><strong>KL University</strong></div>
+              <div><span>Focus</span><strong>Web Development</strong></div>
+            </div>
+            <div class="profile-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Java</span>
+            </div>
+          </div>
+          <div class="floating-card floating-card-top">Front-End Development</div>
+          <div class="floating-card floating-card-bottom">Always learning ↗</div>
         </div>
       </div>
-
-      <div class="hero-visual reveal" aria-label="Developer profile card">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-
-        <div class="profile-card">
-          <div class="profile-top">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span>DEVELOPER PROFILE</span>
-          </div>
-
-          <div class="avatar">
-            <img src="images/profile.jpg"
-              alt="Portrait of Basireddy Siva Subba Reddy"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-            <span class="avatar-fallback" aria-hidden="true">SR</span>
-          </div>
-
-          <h2>Basireddy Siva<br>Subba Reddy</h2>
-          <p class="profile-role">Computer Science & Engineering</p>
-
-          <div class="profile-stats">
-            <div><strong>3</strong><span>Featured projects</span></div>
-            <div><strong>2028</strong><span>Expected graduation</span></div>
-          </div>
-
-          <div class="code-line">
-            <span>const</span> developer = <b>"always learning"</b>;
-          </div>
-        </div>
-
-        <span class="float-chip chip-one">⌘ &nbsp;Frontend</span>
-        <span class="float-chip chip-two">↗ &nbsp;Web projects</span>
-      </div>
+      <div class="scroll-indicator container"><a href="#about">SCROLL TO EXPLORE ↓</a></div>
     </section>
 
-    <div class="focus-strip">
-      <div class="container focus-inner">
-        <span>FOCUSED ON</span>
-        <b>Responsive UI</b><i></i>
-        <b>Interactive Web Apps</b><i></i>
-        <b>Problem Solving</b><i></i>
-        <b>Continuous Learning</b>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
-    <section class="section container" id="about">
-      <div class="section-heading reveal">
-        <p class="eyebrow">A LITTLE ABOUT ME</p>
-        <h2>Curiosity into <span class="gradient">creation.</span></h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p class="lead">
-            I’m a B.Tech Computer Science and Engineering student at KL
-            University, interested in building accessible, responsive websites
-            and learning how products work from interface to deployment.
-          </p>
-
-          <p>
-            Through academic projects, internship experience, and hackathon
-            work, I’ve practiced translating requirements into usable
-            interfaces. I value readable code, thoughtful design, and learning
-            by building.
-          </p>
-
-          <a class="text-link" href="#experience">Explore my experience →</a>
-        </div>
-
-        <div class="highlights reveal">
-          <article class="highlight">
-            <span class="highlight-icon">✳</span>
-            <div>
-              <h3>Design-aware development</h3>
-              <p>Clean layouts, clear hierarchy, and responsive behavior.</p>
-            </div>
-          </article>
-
-          <article class="highlight">
-            <span class="highlight-icon">⌘</span>
-            <div>
-              <h3>Hands-on learning</h3>
-              <p>Building projects to strengthen practical web development skills.</p>
-            </div>
-          </article>
-
-          <article class="highlight">
-            <span class="highlight-icon">↗</span>
-            <div>
-              <h3>Growth mindset</h3>
-              <p>Open to feedback, iteration, and new technical challenges.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section muted" id="experience">
+    <section class="section section-border" id="about">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">WHAT I'VE DONE</p>
-          <h2>Experience & <span class="gradient">practice.</span></h2>
-          <p class="section-intro">
-            A snapshot of learning through an internship, collaborative project
-            work, and cloud-related academic practice.
-          </p>
+          <p class="section-label">GET TO KNOW ME</p>
+          <h2>About <span class="gradient-text">Me</span></h2>
+          <p>A little about my journey and interests.</p>
         </div>
+        <div class="about-grid">
+          <div class="about-content reveal">
+            <h3>Learning by building.</h3>
+            <p>I'm a Computer Science Engineering student at KL University with an interest in front-end development and software engineering.</p>
+            <p>Through my internship and university hackathon projects, I've worked on web applications and explored practical development workflows. I enjoy turning ideas into useful digital experiences while continuously improving my skills.</p>
+            <p>My current focus is strengthening my programming fundamentals, building projects, and preparing for software development internship opportunities.</p>
+          </div>
+          <div class="about-highlights reveal">
+            <article class="highlight-card">
+              <span class="highlight-number">01 / BUILD</span>
+              <h3>Development</h3>
+              <p>Building web applications and user interfaces.</p>
+            </article>
+            <article class="highlight-card">
+              <span class="highlight-number">02 / SOLVE</span>
+              <h3>Problem Solving</h3>
+              <p>Improving logical thinking and coding skills.</p>
+            </article>
+            <article class="highlight-card">
+              <span class="highlight-number">03 / GROW</span>
+              <h3>Continuous Learning</h3>
+              <p>Learning through projects, practice, and collaboration.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="section section-border" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">MY JOURNEY</p>
+          <h2>Experience &amp; <span class="gradient-text">Hackathons</span></h2>
+          <p>Practical experience gained through projects and learning.</p>
+        </div>
         <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-card">
-              <div class="timeline-top">
-                <div>
-                  <p class="type">INTERNSHIP</p>
-                  <h3>Frontend Development Intern</h3>
-                  <p class="org">Cognifyz IT Solutions</p>
-                </div>
-                <span class="number">01</span>
-              </div>
-              <p>
-                Practiced core frontend development using HTML, CSS, and
-                JavaScript, with an emphasis on building and styling web
-                interfaces.
-              </p>
-              <div class="tags">
-                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-              </div>
+          <article class="experience-card reveal">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="experience-type">UNIVERSITY HACKATHON</p>
+            <h3>Front-End Development Hackathon</h3>
+            <p class="experience-company">KL University · Handloom Fashion E-Commerce</p>
+            <p>Developed a handloom fashion e-commerce website featuring product browsing, cart management, checkout confirmation, and an interactive contact form.</p>
+            <div class="tag-list">
+              <span class="tag">HTML</span><span class="tag">CSS</span>
+              <span class="tag">JavaScript</span><span class="tag">E-Commerce</span>
             </div>
+            <a class="text-link" href="https://e-commerce-fedf.vercel.app/" target="_blank" rel="noopener noreferrer">View Handloom Project ↗</a>
           </article>
 
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-card">
-              <div class="timeline-top">
-                <div>
-                  <p class="type">HACKATHON PROJECT</p>
-                  <h3>Handloom Fashion E-Commerce</h3>
-                  <p class="org">KL University</p>
-                </div>
-                <span class="number">02</span>
-              </div>
-              <p>
-                Contributed to a web application showcasing handcrafted
-                products, with product browsing, cart interactions, and
-                checkout confirmation.
-              </p>
-              <div class="tags">
-                <span>Frontend</span><span>E-Commerce UI</span><span>Team Project</span>
-              </div>
+          <article class="experience-card reveal">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="experience-type">UNIVERSITY HACKATHON</p>
+            <h3>Azure Project</h3>
+            <p class="experience-company">KL University</p>
+            <p>Worked on an Azure-related project as part of the KL University hackathon, exploring web project development and Microsoft Azure. Review the repository for implementation details.</p>
+            <div class="tag-list">
+              <span class="tag">Microsoft Azure</span><span class="tag">Web Development</span><span class="tag">Hackathon</span>
             </div>
+            <a class="text-link" href="https://github.com/SivaSubbaReddy006/Azure-project" target="_blank" rel="noopener noreferrer">View Azure Project on GitHub ↗</a>
           </article>
 
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-card">
-              <div class="timeline-top">
-                <div>
-                  <p class="type">ACADEMIC PRACTICE</p>
-                  <h3>Azure Student Store</h3>
-                  <p class="org">Cloud & Web Development</p>
-                </div>
-                <span class="number">03</span>
-              </div>
-              <p>
-                Explored a store-style web project alongside Azure learning
-                and deployment concepts. The linked repository provides the
-                source for review.
-              </p>
-              <div class="tags">
-                <span>Web Development</span><span>Azure</span>
-                <span>Deployment Concepts</span>
-              </div>
+          <article class="experience-card reveal">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="experience-type">INTERNSHIP</p>
+            <h3>Front-End Development Intern</h3>
+            <p class="experience-company">Cognifyz IT Solutions</p>
+            <p>Gained practical experience in front-end development using HTML, CSS, and JavaScript, and strengthened my understanding of responsive user interfaces.</p>
+            <div class="tag-list">
+              <span class="tag">HTML</span><span class="tag">CSS</span>
+              <span class="tag">JavaScript</span><span class="tag">Front-End Development</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section class="section container" id="skills">
-      <div class="section-heading reveal">
-        <p class="eyebrow">MY TOOLKIT</p>
-        <h2>Skills I'm <span class="gradient">developing.</span></h2>
-        <p class="section-intro">
-          A practical overview of technologies and concepts I have studied
-          or used in projects.
-        </p>
-      </div>
-
-      <div class="skills-grid">
-        <article class="skill-card reveal">
-          <div class="skill-heading">
-            <span class="skill-icon">{ }</span><h3>Frontend</h3>
-          </div>
-          <p>Building structured, responsive, and interactive interfaces.</p>
-          <div class="pills">
-            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-            <span>Responsive Design</span>
-          </div>
-        </article>
-
-        <article class="skill-card reveal">
-          <div class="skill-heading">
-            <span class="skill-icon">⌘</span><h3>Programming</h3>
-          </div>
-          <p>Strengthening programming fundamentals and problem-solving.</p>
-          <div class="pills">
-            <span>Java</span><span>Python</span><span>C</span><span>DSA Practice</span>
-          </div>
-        </article>
-
-        <article class="skill-card reveal">
-          <div class="skill-heading">
-            <span class="skill-icon">↗</span><h3>Tools & Platforms</h3>
-          </div>
-          <p>Using common tools to build, manage, and publish projects.</p>
-          <div class="pills">
-            <span>Git</span><span>GitHub</span><span>VS Code</span>
-            <span>Vercel</span><span>Azure Learning</span>
-          </div>
-        </article>
-      </div>
-
-      <p class="skills-note">
-        ✦ &nbsp;I’m continuously improving these skills through coursework,
-        practice, and projects.
-      </p>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section muted" id="projects">
+    <section class="section section-border" id="skills">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow">SELECTED WORK</p>
-          <h2>Projects built to <span class="gradient">learn by doing.</span></h2>
-          <p class="section-intro">
-            Explore the live demos and source code available for each project.
-          </p>
+          <p class="section-label">WHAT I WORK WITH</p>
+          <h2>Technical <span class="gradient-text">Skills</span></h2>
+          <p>Technologies and tools I use and continue to develop.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-icon">&lt;/&gt;</div>
+            <h3>Programming</h3>
+            <p>Programming languages and problem-solving fundamentals.</p>
+            <div class="tag-list"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">C</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">◇</div>
+            <h3>Front-End Development</h3>
+            <p>Creating responsive layouts and interactive web experiences.</p>
+            <div class="tag-list"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Responsive Design</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">⌘</div>
+            <h3>Tools &amp; Platforms</h3>
+            <p>Tools used for development and version control.</p>
+            <div class="tag-list"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Microsoft Azure</span></div>
+          </article>
+          <article class="skill-card reveal">
+            <div class="skill-icon">✳</div>
+            <h3>Core Concepts</h3>
+            <p>Foundational computer science and analytical skills.</p>
+            <div class="tag-list"><span class="tag">DSA</span><span class="tag">DBMS</span><span class="tag">Problem Solving</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-border" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">SELECTED WORK</p>
+          <h2>Featured <span class="gradient-text">Projects</span></h2>
+          <p>Projects built through practice and university hackathons.</p>
         </div>
 
         <div class="projects-grid">
-          <article class="project-card featured reveal">
-            <div class="project-art handloom-art">
-              <div class="art-window">
-                <div class="art-toolbar">
-                  <span></span><span></span><span></span><b>HANDLOOM / COLLECTION</b>
-                </div>
-                <div class="fabric-scene">
-                  <div class="fabric-copy">
-                    <small>CRAFTED WITH CARE</small>
-                    <strong>Tradition<br>meets style.</strong>
-                    <em>Discover handloom</em>
+          <article class="project-card reveal">
+            <div class="project-visual handloom-visual">
+              <div class="mock-window">
+                <div class="mock-window-bar"><span></span><span></span><span></span><small>HANDLOOM STORE</small></div>
+                <div class="mock-store">
+                  <div class="mock-store-heading">HANDLOOM <span>CRAFTED WITH CARE</span></div>
+                  <div class="mock-products">
+                    <div class="mock-product product-one"><span>Handwoven</span></div>
+                    <div class="mock-product product-two"><span>Traditional</span></div>
+                    <div class="mock-product product-three"><span>Artisan</span></div>
                   </div>
-                  <i class="fabric fabric-a"></i>
-                  <i class="fabric fabric-b"></i>
-                  <i class="fabric fabric-c"></i>
+                  <div class="mock-store-footer">HANDCRAFTED · AUTHENTIC · TIMELESS</div>
                 </div>
               </div>
-              <span class="project-index">PROJECT 01</span>
             </div>
-
-            <div class="project-body">
-              <div class="project-meta">
-                <span class="type">E-COMMERCE</span>
-                <span class="live"><i></i> Live demo</span>
-              </div>
+            <div class="project-content">
+              <p class="project-category">E-COMMERCE · HACKATHON</p>
               <h3>Handloom Fashion E-Commerce</h3>
-              <p>
-                A frontend e-commerce experience designed to showcase
-                handcrafted products, featuring product cards, cart
-                interactions, and checkout confirmation.
-              </p>
-              <div class="tags">
-                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-              </div>
+              <p>An e-commerce website promoting handcrafted handloom products with product browsing, cart operations, checkout confirmation, and a contact form.</p>
+              <div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
               <div class="project-links">
-                <a class="link-main" href="https://e-commerce-fedf.vercel.app/"
-                  target="_blank" rel="noopener noreferrer">View live project ↗</a>
-                <a class="link-secondary" href="https://github.com/SivaSubbaReddy006"
-                  target="_blank" rel="noopener noreferrer">GitHub profile ↗</a>
+                <a class="text-link" href="https://e-commerce-fedf.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                <a class="text-link" href="https://github.com/SivaSubbaReddy006/ECOMMERCE" target="_blank" rel="noopener noreferrer">Source Code ↗</a>
               </div>
             </div>
           </article>
 
           <article class="project-card reveal">
-            <div class="project-art movie-art">
-              <div class="movie-window">
-                <div class="movie-toolbar">
-                  <span>◉</span><b>DISCOVER MOVIES</b><span>☰</span>
+            <div class="project-visual movie-visual">
+              <div class="movie-mock">
+                <div class="movie-mock-header"><span class="movie-brand">MOVIE<span>WEB</span></span><span class="movie-search">DISCOVER MOVIES</span></div>
+                <div class="movie-hero">
+                  <span class="movie-kicker">YOUR NEXT WATCH</span>
+                  <h4>Find Your<br>Next Favourite</h4>
+                  <p>Explore a world of movies.</p>
                 </div>
-                <div class="posters">
-                  <div class="poster poster-a"><b>BEYOND<br>THE LIGHT</b></div>
-                  <div class="poster poster-b"><b>THE<br>UNKNOWN</b></div>
-                  <div class="poster poster-c"><b>LAST<br>FRONTIER</b></div>
-                </div>
-                <div class="fake-lines"><i></i><i></i><i></i></div>
+                <div class="movie-thumbnails"><span class="movie-thumb thumb-one"></span><span class="movie-thumb thumb-two"></span><span class="movie-thumb thumb-three"></span><span class="movie-thumb thumb-four"></span></div>
               </div>
-              <span class="project-index">PROJECT 02</span>
             </div>
-
-            <div class="project-body">
-              <div class="project-meta">
-                <span class="type">WEB DEVELOPMENT</span>
-                <span class="live"><i></i> Live demo</span>
-              </div>
+            <div class="project-content">
+              <p class="project-category">WEB DEVELOPMENT</p>
               <h3>Movie Web</h3>
-              <p>
-                A movie-focused web interface project built to practice page
-                structure, content presentation, styling, and interactive
-                frontend behavior.
-              </p>
-              <div class="tags">
-                <span>HTML</span><span>CSS</span><span>JavaScript</span>
-              </div>
+              <p>A movie-themed website built to practice front-end development, webpage layout, styling, and interactive user experiences.</p>
+              <div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
               <div class="project-links">
-                <a class="link-main"
-                  href="https://sivasubbareddy006.github.io/Movie-Web/"
-                  target="_blank" rel="noopener noreferrer">View live project ↗</a>
-                <a class="link-secondary" href="https://github.com/SivaSubbaReddy006"
-                  target="_blank" rel="noopener noreferrer">GitHub profile ↗</a>
+                <a class="text-link" href="https://sivasubbareddy006.github.io/Movie-Web/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+                <a class="text-link" href="https://github.com/SivaSubbaReddy006/Movie-Web" target="_blank" rel="noopener noreferrer">Source Code ↗</a>
               </div>
             </div>
           </article>
 
           <article class="project-card reveal">
-            <div class="project-art azure-art">
+            <div class="project-visual azure-visual">
               <div class="azure-window">
-                <div class="azure-toolbar">
-                  <b>AZURE STUDENT STORE</b><span>⋯</span>
-                </div>
-                <div class="azure-layout">
-                  <div class="azure-side"><i></i><i></i><i></i><i></i></div>
-                  <div class="azure-main">
-                    <small>STUDENT STORE</small>
-                    <strong>Explore products</strong>
-                    <div class="azure-items"><i></i><i></i><i></i></div>
-                    <div class="azure-cta"></div>
-                  </div>
+                <div class="azure-window-header"><span class="azure-logo">A</span><span>MICROSOFT AZURE PROJECT</span><span class="azure-status">HACKATHON</span></div>
+                <div class="azure-diagram">
+                  <div class="azure-node azure-node-highlight"><span class="node-icon">◇</span><strong>Azure Project</strong><small>University hackathon</small></div>
+                  <span class="azure-arrow">↓</span>
+                  <div class="azure-node"><span class="node-icon">⌘</span><strong>Project Files</strong><small>Source repository</small></div>
                 </div>
               </div>
-              <span class="project-index">PROJECT 03</span>
             </div>
-
-            <div class="project-body">
-              <div class="project-meta">
-                <span class="type">ACADEMIC / CLOUD</span>
-                <span class="live source"><i></i> Source available</span>
-              </div>
-              <h3>Azure Student Store</h3>
-              <p>
-                A store-style web project connected to academic exploration
-                of Azure and deployment concepts. Review the repository for
-                implementation details.
-              </p>
-              <div class="tags">
-                <span>Web Development</span><span>Azure</span><span>GitHub</span>
-              </div>
+            <div class="project-content">
+              <p class="project-category">CLOUD · HACKATHON</p>
+              <h3>Azure Project</h3>
+              <p>A project developed during the KL University hackathon exploring Microsoft Azure and web project development. Visit the repository for source files and implementation details.</p>
+              <div class="tag-list"><span class="tag">Microsoft Azure</span><span class="tag">Web Development</span><span class="tag">Hackathon</span></div>
               <div class="project-links">
-                <a class="link-main"
-                  href="https://github.com/SivaSubbaReddy006/Azure-project"
-                  target="_blank" rel="noopener noreferrer">View source code ↗</a>
+                <a class="text-link" href="https://github.com/SivaSubbaReddy006/Azure-project" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
               </div>
             </div>
           </article>
         </div>
 
-        <p class="project-note">
-          Project preview panels are illustrative designs, not screenshots
-          from the live applications. Replace them with genuine project
-          screenshots when available.
-        </p>
+        <p class="project-disclaimer">The project cards use illustrative previews. Open each live demo to see the actual application.</p>
+        <div class="github-cta reveal">
+          <p>Want to explore more of my code and projects?</p>
+          <a class="btn btn-secondary" href="https://github.com/SivaSubbaReddy006" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+        </div>
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section class="section container" id="education">
-      <div class="section-heading reveal">
-        <p class="eyebrow">LEARNING FOUNDATION</p>
-        <h2>Education & <span class="gradient">growth.</span></h2>
-      </div>
-
-      <article class="education-card reveal">
-        <div class="education-logo">KL<span>U</span></div>
-        <div class="education-info">
-          <p class="type">UNDERGRADUATE DEGREE</p>
-          <h3>B.Tech — Computer Science and Engineering</h3>
-          <p>KL University</p>
-          <div class="tags">
-            <span>Software Development</span>
-            <span>Computer Science Fundamentals</span>
+    <section class="section section-border" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">ACADEMIC BACKGROUND</p>
+          <h2>My <span class="gradient-text">Education</span></h2>
+        </div>
+        <article class="education-card reveal">
+          <div class="education-icon">KL</div>
+          <div class="education-content">
+            <p class="experience-type">EXPECTED GRADUATION: 2028</p>
+            <h3>Bachelor of Technology — Computer Science Engineering</h3>
+            <p class="experience-company">KL University</p>
+            <p>Building a foundation in computer science, programming, software development, and problem-solving.</p>
           </div>
-        </div>
-        <div class="education-year">
-          <span>EXPECTED</span><strong>2028</strong>
-        </div>
-      </article>
+          <div class="education-date"><span>Degree</span><strong>B.Tech</strong></div>
+        </article>
+      </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="contact-section" id="contact">
-      <div class="container contact-inner reveal">
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2>Have an opportunity<br>or idea in mind?</h2>
-        <p class="contact-description">
-          I’d be glad to connect, discuss projects, and learn about
-          opportunities where I can contribute and grow.
-        </p>
-
-        <div class="contact-actions">
-          <a class="button primary" href="mailto:reddysivasubba@gmail.com">
-            Connect on Email ↗
-          </a>
-          <a class="button secondary"
-            href="https://www.linkedin.com/in/basireddy-sivasubbareddy-8a3230338/"
-            target="_blank" rel="noopener noreferrer">
-            Connect on LinkedIn ↗
-          </a>
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <p class="section-label">LET'S CONNECT</p>
+          <h2>Have an opportunity <span class="gradient-text">or project in mind?</span></h2>
+          <p>I'm interested in connecting with developers, collaborating on projects, and exploring software development internship opportunities.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:reddysivasubba@gmail.com">Email Me ↗</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/basireddy-sivasubbareddy-8a3230338/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="btn btn-secondary" href="https://github.com/SivaSubbaReddy006" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+          <p class="contact-note">reddysivasubba@gmail.com</p>
         </div>
-
-        <a class="github-contact" href="https://github.com/SivaSubbaReddy006"
-          target="_blank" rel="noopener noreferrer">
-          Explore my GitHub profile ↗
-        </a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <a class="brand" href="#home">
-        <span class="brand-mark">SR</span>
-        <span>Siva Subba Reddy<span class="accent">.</span></span>
-      </a>
-      <p>Designed and built with curiosity. ©
-        <span id="current-year">2026</span> Siva Subba Reddy.</p>
-      <a class="back-top" href="#home">Back to top ↑</a>
+    <div class="container footer-content">
+      <a href="#home" class="logo"><span class="logo-mark">S</span><span>Siva<span class="logo-dot">.</span></span></a>
+      <p>Designed and developed by Basireddy Siva Subba Reddy.</p>
+      <p>© <span id="current-year">2026</span> All rights reserved.</p>
     </div>
   </footer>
 </body>

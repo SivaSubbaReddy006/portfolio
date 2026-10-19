@@ -1,38 +1,37 @@
-(() => {
-  document.body.classList.add("js-ready");
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+  const navItems = document.querySelectorAll(".nav-link");
+  const sections = document.querySelectorAll("main section[id]");
+  const yearElement = document.getElementById("current-year");
 
-  // Mobile navigation
-  const menuButton = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav-links");
-
-  const navLinks = [
-    ...document.querySelectorAll('.nav-links a[href^="#"]')
-  ];
-
-  function closeMenu() {
-    if (!menuButton || !nav) return;
-
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "Open menu");
-    nav.classList.remove("open");
+  // Update the copyright year automatically.
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
   }
 
-  if (menuButton && nav) {
-    menuButton.addEventListener("click", () => {
-      const opening =
-        menuButton.getAttribute("aria-expanded") !== "true";
+  // Mobile navigation menu.
+  const closeMenu = () => {
+    if (!menuToggle || !navLinks) return;
 
-      menuButton.setAttribute("aria-expanded", String(opening));
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+  };
 
-      menuButton.setAttribute(
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+      navLinks.classList.toggle("open", !isOpen);
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute(
         "aria-label",
-        opening ? "Close menu" : "Open menu"
+        isOpen ? "Open navigation" : "Close navigation"
       );
-
-      nav.classList.toggle("open", opening);
     });
 
-    navLinks.forEach((link) => {
+    navItems.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
@@ -49,14 +48,13 @@
     });
   }
 
-  // Scroll reveal animations
+  // Reveal sections as they enter the viewport.
   const revealItems = document.querySelectorAll(".reveal");
-
-  const reduceMotion = window.matchMedia(
+  const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  if ("IntersectionObserver" in window && !reduceMotion) {
+  if ("IntersectionObserver" in window && !reducedMotion) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -81,24 +79,20 @@
     });
   }
 
-  // Highlight the current navigation section
-  const sections = [
-    ...document.querySelectorAll("main section[id]")
-  ];
-
-  if ("IntersectionObserver" in window && sections.length) {
+  // Highlight the navigation link for the visible section.
+  if ("IntersectionObserver" in window) {
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
 
-          navLinks.forEach((link) => {
-            const active =
-              link.getAttribute("href") === "#" + entry.target.id;
+          navItems.forEach((link) => {
+            const isActive =
+              link.getAttribute("href") === `#${entry.target.id}`;
 
-            link.classList.toggle("active", active);
+            link.classList.toggle("active", isActive);
 
-            if (active) {
+            if (isActive) {
               link.setAttribute("aria-current", "location");
             } else {
               link.removeAttribute("aria-current");
@@ -115,11 +109,4 @@
       sectionObserver.observe(section);
     });
   }
-
-  // Automatically update the copyright year
-  const year = document.getElementById("current-year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
-})();
+});
