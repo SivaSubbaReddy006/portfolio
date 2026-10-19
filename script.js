@@ -1,56 +1,38 @@
+(() => {
+  document.body.classList.add("js-ready");
 
-/* =========================================
-   SIVA SUBBA REDDY — PORTFOLIO INTERACTIONS
-   ========================================= */
+  // Mobile navigation
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav-links");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector(".nav-menu");
-  const navLinks = [...document.querySelectorAll(".nav-link")];
-  const yearElement = document.getElementById("current-year");
+  const navLinks = [
+    ...document.querySelectorAll('.nav-links a[href^="#"]')
+  ];
 
-  // Keep the copyright year current.
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-
-  // Mobile navigation.
   function closeMenu() {
-    if (!menuToggle || !navMenu) return;
+    if (!menuButton || !nav) return;
 
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Open navigation menu");
-    navMenu.classList.remove("is-open");
-    body.classList.remove("menu-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open menu");
+    nav.classList.remove("open");
   }
 
-  function openMenu() {
-    if (!menuToggle || !navMenu) return;
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      const opening =
+        menuButton.getAttribute("aria-expanded") !== "true";
 
-    menuToggle.setAttribute("aria-expanded", "true");
-    menuToggle.setAttribute("aria-label", "Close navigation menu");
-    navMenu.classList.add("is-open");
-    body.classList.add("menu-open");
-  }
+      menuButton.setAttribute("aria-expanded", String(opening));
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isExpanded =
-        menuToggle.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute(
+        "aria-label",
+        opening ? "Close menu" : "Open menu"
+      );
 
-      if (isExpanded) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+      nav.classList.toggle("open", opening);
     });
 
     navLinks.forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    navMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
@@ -61,71 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 800) {
+      if (window.innerWidth > 760) {
         closeMenu();
       }
     });
   }
 
-  // Highlight the current navigation section.
-  const sections = [...document.querySelectorAll("main section[id]")];
+  // Scroll reveal animations
+  const revealItems = document.querySelectorAll(".reveal");
 
-  function setActiveLink(id) {
-    navLinks.forEach((link) => {
-      const matches = link.getAttribute("href") === `#${id}`;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-      if (matches) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "location");
-      } else {
-        link.classList.remove("active");
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
-
-  if ("IntersectionObserver" in window && sections.length > 0) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
-
-        if (visibleEntries.length > 0) {
-          setActiveLink(visibleEntries[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.15, 0.3, 0.5]
-      }
-    );
-
-    sections.forEach((section) => sectionObserver.observe(section));
-  }
-
-  // Respect a direct link to a section on initial page load.
-  const initialSection = window.location.hash.slice(1);
-
-  if (initialSection && document.getElementById(initialSection)) {
-    setActiveLink(initialSection);
-  }
-
-  // Scroll reveal animations.
-  // Content stays visible if IntersectionObserver is unavailable.
-  const revealTargets = document.querySelectorAll(
-    ".section-heading, .about-copy, .about-details, " +
-    ".timeline-item, .skill-card, .project-card, " +
-    ".education-card, .contact-panel"
-  );
-
-  if (
-    "IntersectionObserver" in window &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  ) {
+  if ("IntersectionObserver" in window && !reduceMotion) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -136,17 +67,59 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -35px 0px"
+        threshold: 0.12,
+        rootMargin: "0px 0px -25px 0px"
       }
     );
 
-    revealTargets.forEach((element) => {
-      element.classList.add("reveal");
-      revealObserver.observe(element);
+    revealItems.forEach((item) => {
+      revealObserver.observe(item);
     });
-
-    // Enable reveal hiding only after targets have been prepared.
-    body.classList.add("js-ready");
+  } else {
+    revealItems.forEach((item) => {
+      item.classList.add("is-visible");
+    });
   }
-});
+
+  // Highlight the current navigation section
+  const sections = [
+    ...document.querySelectorAll("main section[id]")
+  ];
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          navLinks.forEach((link) => {
+            const active =
+              link.getAttribute("href") === "#" + entry.target.id;
+
+            link.classList.toggle("active", active);
+
+            if (active) {
+              link.setAttribute("aria-current", "location");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          });
+        });
+      },
+      {
+        rootMargin: "-30% 0px -60% 0px"
+      }
+    );
+
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+  }
+
+  // Automatically update the copyright year
+  const year = document.getElementById("current-year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+})();
