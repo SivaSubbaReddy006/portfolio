@@ -1,82 +1,152 @@
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const navItems = document.querySelectorAll(".nav-links a");
-const yearElement = document.querySelector("#year");
+/* =========================================
+   SIVA SUBBA REDDY — PORTFOLIO INTERACTIONS
+   ========================================= */
 
-// Automatically update the copyright year.
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
+  const navLinks = [...document.querySelectorAll(".nav-link")];
+  const yearElement = document.getElementById("current-year");
 
-// Close the mobile navigation.
-function closeMenu() {
-  navLinks?.classList.remove("open");
+  // Keep the copyright year current.
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
 
-  menuToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-label", "Open navigation");
-}
+  // Mobile navigation.
+  function closeMenu() {
+    if (!menuToggle || !navMenu) return;
 
-// Toggle the mobile navigation.
-menuToggle?.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+    navMenu.classList.remove("is-open");
+    body.classList.remove("menu-open");
+  }
 
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute(
-    "aria-label",
-    isOpen ? "Close navigation" : "Open navigation"
+  function openMenu() {
+    if (!menuToggle || !navMenu) return;
+
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close navigation menu");
+    navMenu.classList.add("is-open");
+    body.classList.add("menu-open");
+  }
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      const isExpanded =
+        menuToggle.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    navMenu.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 800) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Highlight the current navigation section.
+  const sections = [...document.querySelectorAll("main section[id]")];
+
+  function setActiveLink(id) {
+    navLinks.forEach((link) => {
+      const matches = link.getAttribute("href") === `#${id}`;
+
+      if (matches) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.classList.remove("active");
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  if ("IntersectionObserver" in window && sections.length > 0) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
+
+        if (visibleEntries.length > 0) {
+          setActiveLink(visibleEntries[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: [0, 0.15, 0.3, 0.5]
+      }
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  // Respect a direct link to a section on initial page load.
+  const initialSection = window.location.hash.slice(1);
+
+  if (initialSection && document.getElementById(initialSection)) {
+    setActiveLink(initialSection);
+  }
+
+  // Scroll reveal animations.
+  // Content stays visible if IntersectionObserver is unavailable.
+  const revealTargets = document.querySelectorAll(
+    ".section-heading, .about-copy, .about-details, " +
+    ".timeline-item, .skill-card, .project-card, " +
+    ".education-card, .contact-panel"
   );
-});
 
-// Close navigation after selecting a section.
-navItems.forEach((link) => {
-  link.addEventListener("click", closeMenu);
-});
-
-// Close navigation with Escape.
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMenu();
-  }
-});
-
-// Reset navigation when returning to desktop size.
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 760) {
-    closeMenu();
-  }
-});
-
-// Highlight the current navigation section.
-const sections = document.querySelectorAll("main section[id]");
-
-if ("IntersectionObserver" in window) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        navItems.forEach((link) => {
-          const matches =
-            link.getAttribute("href") === `#${entry.target.id}`;
-
-          if (matches) {
-            link.classList.add("active");
-            link.setAttribute("aria-current", "location");
-          } else {
-            link.classList.remove("active");
-            link.removeAttribute("aria-current");
+  if (
+    "IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
           }
         });
-      });
-    },
-    {
-      rootMargin: "-25% 0px -60% 0px",
-      threshold: 0
-    }
-  );
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -35px 0px"
+      }
+    );
 
-  sections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
-}
+    revealTargets.forEach((element) => {
+      element.classList.add("reveal");
+      revealObserver.observe(element);
+    });
+
+    // Enable reveal hiding only after targets have been prepared.
+    body.classList.add("js-ready");
+  }
+});
